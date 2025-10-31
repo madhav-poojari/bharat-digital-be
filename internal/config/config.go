@@ -22,8 +22,8 @@ func Load() *Config {
 		RedisAddr:     getEnv("REDIS_ADDR", "127.0.0.1:6379"),
 		RedisPass:     getEnv("REDIS_PASS", ""),
 		Port:          getEnv("PORT", "8080"),
-		DataGovAPIKey: getEnv("DATA_GOV_API_KEY", "579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b"),//default api key with 10 pagination
-		CronSchedule:  getEnv("CRON_SCHEDULE", "0 2 * * *"), // daily 02:00 default
+		DataGovAPIKey: getEnv("DATA_GOV_API_KEY", "579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b"), //default api key with 10 pagination
+		CronSchedule:  getEnv("CRON_SCHEDULE", "0 2 * * *"),                                                   // daily 02:00 default
 		HTTPTimeout:   50 * time.Second,
 	}
 

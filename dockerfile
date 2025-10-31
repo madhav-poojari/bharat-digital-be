@@ -6,6 +6,7 @@ RUN go mod download
 COPY . .
 ARG PACKAGE=./cmd/api    # change if your main is elsewhere, e.g. ./ or ./cmd/myapi
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -o /server $PACKAGE
+RUN apk add --no-cache ca-certificates
 
 # runtime stage
 FROM scratch
