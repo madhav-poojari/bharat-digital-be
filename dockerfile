@@ -4,12 +4,12 @@ WORKDIR /src
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-ARG PACKAGE=./cmd/api    # change if your main is elsewhere, e.g. ./ or ./cmd/myapi
+ARG PACKAGE=./cmd/api
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -o /server $PACKAGE
-RUN apk add --no-cache ca-certificates
 
 # runtime stage
-FROM scratch
+FROM alpine:latest
+RUN apk add --no-cache ca-certificates
 COPY --from=build /server /server
 EXPOSE 8080
 ENTRYPOINT ["/server"]
